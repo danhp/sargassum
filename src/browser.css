@@ -1,0 +1,41 @@
+#gbwa,
+div.gb_Xb,
+paper-icon-button[data-id~="show-miniplayer"],
+a.nav-item-container.tooltip.sub,
+#shop-nav,
+a.tooltip[data-action~="send-gift"] {
+    display: none
+}
+
+div.table-enticement,
+div.image-enticement[class*="short-enticement"] {
+    display: none
+}
+
+div.image-enticement[class*="full-enticement"] {
+    background: none;
+    height: 300px;
+    min-height: 300px!important
+}
+
+input {
+    font-family: sans-serif;
+}
+
+#left-nav-open-button,
+#left-nav-close-button {
+    display: none;
+}
+
+#drawer {
+    transform: translateX(0) !important;
+    width: 200px !important;
+}
+
+#nav-container {
+    width: 200px !important;
+}
+
+#main {
+    left: 200px !important;
+}
