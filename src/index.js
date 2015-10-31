@@ -39,10 +39,23 @@ app.on('ready', () => {
     page.on('dom-ready', () => {
         page.insertCSS(fs.readFileSync(path.join(__dirname, 'browser.css'), 'utf8'));
         mainWindow.show();
+        page.send('start');
     });
 
     mainWindow.on('page-title-updated', (e) => {
         e.preventDefault();
+
+        if (page.canGoBack()) {
+            page.send('show-back');
+        } else {
+            page.send('hide-back');
+        }
+
+        if (page.canGoForward()) {
+            page.send('show-forward');
+        } else {
+            page.send('hide-forward');
+        }
     });
 
     page.on('new-window', (e, url) => {

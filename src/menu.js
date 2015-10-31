@@ -28,12 +28,6 @@ const tpl = [
                 }
             },
             { type: 'separator' },
-            { label: 'Log Out',
-                click() {
-                    sendAction('log-out');
-                }
-            },
-            { type: 'separator' },
             { label: `Hide ${appName}`, accelerator: 'Cmd+H', role: 'hide' },
             { label: 'Hide Others', accelerator: 'Cmd+Shift+H', role: 'hideothers' },
             { label: 'Show All', role: 'unhide' },
@@ -41,6 +35,23 @@ const tpl = [
             { label: `Quit ${appName}`, accelerator: 'Cmd+Q',
                 click() {
                     app.quit();
+                }
+            }
+        ]
+    },
+
+    {
+        label: 'File',
+        submenu: [
+            {label: 'New Playlist', accelerator: 'CmdOrCtrl+N',
+                click() {
+                    sendAction('new-playlist');
+                }
+            },
+            { type: 'separator' },
+            { label: 'Log Out', accelerator: 'CmdOrCtrl+Shift+W',
+                click() {
+                    sendAction('log-out');
                 }
             }
         ]
@@ -55,7 +66,13 @@ const tpl = [
             { label: 'Cut', accelerator: 'CmdOrCtrl+X', role: 'cut' },
             { label: 'Copy', accelerator: 'CmdOrCtrl+C', role: 'copy' },
             { label: 'Paste', accelerator: 'CmdOrCtrl+V', role: 'paste' },
-            { label: 'Select All', accelerator: 'CmdOrCtrl+A', role: 'selectall' }
+            { label: 'Select All', accelerator: 'CmdOrCtrl+A', role: 'selectall' },
+            { type: 'separator' },
+            { label: 'Search', accelerator: '/',
+                click() {
+                    sendAction('search');
+                }
+            }
         ]
     },
 

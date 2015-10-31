@@ -39,3 +39,27 @@ input {
 #main {
     left: 200px !important;
 }
+
+#material-breadcrumbs {
+    margin-right: 0px !important;
+}
+
+#back-button, #forward-button {
+    width: 32px;
+}
+
+#back-button {
+    background-image: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-left-128.png');
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-filter: invert(75%);
+}
+
+#forward-button {
+    background-image: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-right-128.png');
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-filter: invert(75%);
+}

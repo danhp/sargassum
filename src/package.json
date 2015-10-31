@@ -8,7 +8,8 @@
   },
   "electronVersion": "0.34.1",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build-osx": "electron-packager . $npm_package_productName --overwrite --out=dist --ignore='^/dist$' --ignore='^/imgs$' --prune --platform=darwin --arch=x64 --icon=imgs/icon.icns --app-version=$npm_package_version --version=$npm_package_electronVersion"
   },
   "devDependencies": {
     "electron-packager": "^5.1.0",
