@@ -18,8 +18,6 @@
     "xo": "*"
   },
   "dependencies": {
-    "electron-packager": "^5.1.0",
-    "electron-prebuilt": "^0.35.1",
     "electron-gh-releases": "^2.0.1",
     "xo": "*"
   },
