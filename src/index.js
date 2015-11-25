@@ -1,21 +1,28 @@
 'use strict';
 const path = require('path');
 const fs = require('fs');
-const app = require('app');
-const BrowserWindow = require('browser-window');
-const shell = require('shell');
-const globalShortcut = require('global-shortcut');
-const Menu = require('menu');
+const electron = require('electron');
+const app = electron.app;
+const ipc = electron.ipcMain;
+const BrowserWindow = electron.BrowserWindow;
+const globalShortcut = electron.globalShortcut;
+const Menu = electron.Menu;
 const appMenu = require('./menu');
+const storage = require('./storage');
 
 let mainWindow;
+let isQuitting = false;
 
 function createMainWindow() {
+    const lastWindowState = storage.get('lastWindowState') || {width: 1050, height: 700};
+
     const win = new BrowserWindow({
         'title': app.getName(),
         'show': false,
-        'width': 1050,
-        'height': 700,
+        'x': lastWindowState.x,
+        'y': lastWindowState.y,
+        'width': lastWindowState.width,
+        'height': lastWindowState.height,
         'min-width': 950,
         'min-height': 650,
         'web-preferences': {
@@ -23,8 +30,13 @@ function createMainWindow() {
         }
     });
 
-    win.loadUrl('https://play.google.com/music/listen#/now');
-    win.on('closed', app.quit);
+    win.loadURL('https://play.google.com/music/listen#/now');
+    win.on('close', e => {
+        if (!isQuitting) {
+            e.preventDefault();
+            win.hide();
+        }
+    });
 
     return win;
 }
@@ -60,7 +72,7 @@ app.on('ready', () => {
 
     page.on('new-window', (e, url) => {
         e.preventDefault();
-        shell.openExternal(url);
+        electron.shell.openExternal(url);
     });
 
     globalShortcut.register('MediaPlayPause', function() {
@@ -76,6 +88,19 @@ app.on('ready', () => {
     });
 });
 
-app.on('will-quit', () => {
+app.on('before-quit', () => {
+    isQuitting = true;
     globalShortcut.unregisterAll();
+
+    if (!mainWindow.isFullScreen()) {
+        storage.set('lastWindowState', mainWindow.getBounds())
+    }
+});
+
+app.on('activate', () => {
+    mainWindow.show();
+});
+
+ipc.on('notification-click', () => {
+    mainWindow.show();
 });

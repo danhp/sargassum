@@ -67,3 +67,20 @@ ipc.on('hide-forward', () => {
     var node = document.getElementById("forward-button");
     node.setAttribute("style", "-webkit-filter:invert(75%)")
 });
+
+/* eslint-disable no-native-reassign, no-undef */
+// Extend and replace the native notifications.
+const NativeNotification = Notification;
+
+Notification = function (title, options) {
+	const notification = new NativeNotification(title, options);
+	notification.addEventListener('click', () => {
+		ipc.send('notification-click');
+	});
+
+	return notification;
+};
+Notification.prototype = NativeNotification.prototype;
+Notification.permission = NativeNotification.permission;
+Notification.requestPermission = NativeNotification.requestPermission.bind(Notification);
+/* eslint-enable no-native-reassign, no-undef */

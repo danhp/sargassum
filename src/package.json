@@ -6,13 +6,13 @@
   "engines": {
     "node": ">=4"
   },
-  "electronVersion": "0.34.1",
+  "electronVersion": "0.35.1",
   "scripts": {
     "start": "electron .",
     "build-osx": "electron-packager . $npm_package_productName --overwrite --out=dist --ignore='^/dist$' --ignore='^/imgs$' --prune --platform=darwin --arch=x64 --icon=imgs/icon.icns --app-version=$npm_package_version --version=$npm_package_electronVersion"
   },
   "devDependencies": {
     "electron-packager": "^5.1.0",
-    "electron-prebuilt": "^0.34.1"
+    "electron-prebuilt": "^0.35.1"
   }
 }

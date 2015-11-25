@@ -1,9 +1,10 @@
 #gbwa,
-div.gb_Xb,
+div.gb_0b,
 paper-icon-button[data-id~="show-miniplayer"],
-a.nav-item-container.tooltip.sub,
+paper-button.nav-item-container.tooltip.sub.paper-button-0,
 #shop-nav,
-a.tooltip[data-action~="send-gift"] {
+a.tooltip[data-action~="send-gift"],
+a.tooltip[data-action~="upload-music"] {
     display: none
 }
 
