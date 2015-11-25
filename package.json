@@ -1,7 +1,7 @@
 {
   "name": "sargassum",
   "productName": "Sargassum",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "license": "MIT",
   "engines": {
     "node": ">=4"
@@ -18,8 +18,7 @@
     "xo": "*"
   },
   "dependencies": {
-    "electron-gh-releases": "^2.0.1",
-    "xo": "*"
+    "electron-gh-releases": "^2.0.1"
   },
   "xo": {
     "esnext": true,

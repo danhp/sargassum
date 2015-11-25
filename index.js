@@ -7,11 +7,33 @@ const ipc = electron.ipcMain;
 const BrowserWindow = electron.BrowserWindow;
 const globalShortcut = electron.globalShortcut;
 const Menu = electron.Menu;
+const GhReleases = require('electron-gh-releases');
 const appMenu = require('./menu');
 const storage = require('./storage');
 
 let mainWindow;
 let isQuitting = false;
+
+const options = {
+	repo: 'phamdaniel/sargassum',
+	currentVersion: app.getVersion()
+};
+const updater = new GhReleases(options);
+
+updater.check((err, status) => {
+	console.log('Checking ' + status);
+	console.log(app.getVersion());
+	if (!err && status) {
+		console.log('Downloading Update');
+		updater.download();
+	}
+});
+
+updater.on('update-downloaded', info => {
+	console.log(info);
+	console.log('Downloaded, now installing');
+	updater.install();
+});
 
 function createMainWindow() {
 	const lastWindowState = storage.get('lastWindowState') || {width: 1050, height: 700};
