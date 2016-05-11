@@ -28,19 +28,6 @@ input {
     display: none;
 }
 
-#drawer {
-    transform: translateX(0) !important;
-    width: 200px !important;
-}
-
-#nav-container {
-    width: 200px !important;
-}
-
-#main {
-    left: 200px !important;
-}
-
 #material-breadcrumbs {
     margin-right: 0px !important;
 }

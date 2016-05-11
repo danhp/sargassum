@@ -1,24 +1,23 @@
 {
   "name": "sargassum",
   "productName": "Sargassum",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "node": ">=5"
   },
-  "electronVersion": "0.35.1",
   "scripts": {
     "test": "xo",
     "start": "electron .",
-    "build-osx": "electron-packager . $npm_package_productName --overwrite --out=dist --ignore='^/dist$' --ignore='^/imgs$' --prune --platform=darwin --arch=x64 --icon=imgs/icon.icns --app-version=$npm_package_version --version=$npm_package_electronVersion"
+    "build-osx": "electron-packager . --overwrite --out=dist --ignore='^/dist$' --ignore='^/imgs$' --prune --platform=darwin --arch=x64 --icon=imgs/icon.icns --app-version=$npm_package_version"
   },
   "devDependencies": {
-    "electron-packager": "^5.1.0",
-    "electron-prebuilt": "^0.35.1",
+    "electron-packager": "^7.0.0",
+    "electron-prebuilt": "^1.0.0",
     "xo": "*"
   },
   "dependencies": {
-    "electron-gh-releases": "^2.0.1"
+    "electron-gh-releases": "^2.0.2"
   },
   "xo": {
     "esnext": true,
