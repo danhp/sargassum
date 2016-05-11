@@ -21,9 +21,9 @@ const options = {
 const updater = new GhReleases(options);
 
 updater.check((err, status) => {
-	console.log('Checking ' + status);
+	console.log('Checking: ' + status);
 	console.log(app.getVersion());
-	if (!err && status) {
+	if (!err) {
 		console.log('Downloading Update');
 		updater.download();
 	}

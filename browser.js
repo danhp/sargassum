@@ -1,5 +1,6 @@
 'use strict';
-const ipc = require('ipc');
+const electron = require('electron');
+const ipc = electron.ipcRenderer;
 
 ipc.on('show-preferences', () => {
 	document.querySelector('a.tooltip[data-type*="accountsetting"]').click();
