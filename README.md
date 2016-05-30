@@ -14,4 +14,4 @@ Automatically binds the global media keys for a more native experience.
 - Build: `npm run build-osx`
 
 ## Liscence
-MIT © [Daniel Pham](https://phamdaniel.github.io)
+MIT © [Daniel Pham](https://danhp.github.io)
